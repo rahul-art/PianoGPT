@@ -1,3 +1,7 @@
 aitextgen
 streamlit
 gdown
+mido
+pretty-midi
+pyfluidsynth
+soundfile
