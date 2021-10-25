@@ -2,7 +2,6 @@ import os
 import os.path
 import random
 import pretty_midi
-import path
 import numpy as np
 
 import streamlit as st
