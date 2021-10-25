@@ -10,14 +10,12 @@ from scipy.io import wavfile
 from aitextgen import aitextgen
 
 @st.cache
-def setup():
+def setup_ai():
     os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
-
     st.title("PianoGPT")
+    return aitextgen(model_folder=".")
 
-    ai = aitextgen(model_folder=".")
-
-setup()
+ai = setup_ai()
 
 random_number = random.randrange(0, 150_000)
 title = st.text_input(label="Enter a title or the ai will randomly generate it")
