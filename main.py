@@ -18,6 +18,8 @@ def setup_ai():
     st.title("PianoGPT")
     ai = aitextgen(model_folder=".")
 
+setup_ai()
+    
 random_number = random.randrange(0, 150_000)
 title = st.text_input(label="Enter a title or the ai will randomly generate it")
 
