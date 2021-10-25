@@ -1,12 +1,14 @@
 import os
 import random
 import pretty_midi
+import path
+import numpy as np
 
 import streamlit as st
 from aitextgen import aitextgen
 
-os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
-os.system("apt install abcmidi")
+if os.path.isfile("pytorch_model.bin"):
+    os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
 
 st.title("PianoGPT")
 
