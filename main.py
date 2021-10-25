@@ -1,5 +1,6 @@
 import os
 import random
+import pretty_midi
 
 import streamlit as st
 from aitextgen import aitextgen
