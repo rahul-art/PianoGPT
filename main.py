@@ -17,6 +17,8 @@ def setup():
 
     ai = aitextgen(model_folder=".")
 
+setup()
+
 random_number = random.randrange(0, 150_000)
 title = st.text_input(label="Enter a title or the ai will randomly generate it")
 
