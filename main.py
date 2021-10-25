@@ -6,7 +6,7 @@ import streamlit as st
 from aitextgen import aitextgen
 
 os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
-os.system("sudo apt install abcmidi")
+os.system("apt install abcmidi")
 
 st.title("PianoGPT")
 
