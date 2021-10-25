@@ -1,5 +1,4 @@
 import os
-import os.path
 import random
 import pretty_midi
 import io
@@ -10,12 +9,14 @@ import streamlit as st
 from scipy.io import wavfile
 from aitextgen import aitextgen
 
-if not os.path.isfile("pytorch_model.bin"):
+@st.cache
+def setup():
     os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
 
-st.title("PianoGPT")
+    st.title("PianoGPT")
 
-ai = aitextgen(model_folder=".")
+    ai = aitextgen(model_folder=".")
+
 random_number = random.randrange(0, 150_000)
 title = st.text_input(label="Enter a title or the ai will randomly generate it")
 
