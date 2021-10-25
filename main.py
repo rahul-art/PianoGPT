@@ -1,4 +1,5 @@
 import os
+import os.path
 import random
 import pretty_midi
 import path
@@ -7,7 +8,7 @@ import numpy as np
 import streamlit as st
 from aitextgen import aitextgen
 
-if os.path.isfile("pytorch_model.bin"):
+if not os.path.isfile("pytorch_model.bin"):
     os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
 
 st.title("PianoGPT")
