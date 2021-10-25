@@ -2,9 +2,11 @@ import os
 import os.path
 import random
 import pretty_midi
-import numpy as np
+import io
 
+import numpy as np
 import streamlit as st
+
 from aitextgen import aitextgen
 
 if not os.path.isfile("pytorch_model.bin"):
