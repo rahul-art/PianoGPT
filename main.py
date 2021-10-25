@@ -24,15 +24,17 @@ random_number = random.randrange(0, 150_000)
 title = st.text_input(label="Enter a title or the ai will randomly generate it")
 
 with st.spinner("Generating..."):
-    generated = ai.generate_one(prompt=f"X:{random_number}\nT:{title}",
-                                top_k=40,
-                                temperature=0.8,
-                                max_length=1024,
-                                eos_token_id=437).replace("\n<|end", "")
-    with open("generated_music.abc", "w") as f:
-        f.write(generated)
+    while True:
+        generated = ai.generate_one(prompt=f"X:{random_number}\nT:{title}",
+                                    top_k=40,
+                                    temperature=0.8,
+                                    max_length=1024,
+                                    eos_token_id=437).replace("\n<|end", "")
+        with open("generated_music.abc", "w") as f:
+            f.write(generated)
 
-    os.system("abc2midi generated_music.abc -o generated_music.mid")
+        if "Error" not in str(os.system("abc2midi generated_music.abc -o generated_music.mid")):
+            break
     os.remove("generated_music.abc")
     
     # https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
