@@ -19,7 +19,7 @@ with st.spinner("Generating..."):
                                 max_length=1024,
                                 eos_token_id=437).replace("\n<|end", "")
     with open("generated_music.abc", "w") as f:
-    f.write(generated)
+        f.write(generated)
 
     os.system("abc2midi generated_music.abc -o generated_music.mid")
     os.remove("generated_music.abc")
