@@ -7,6 +7,7 @@ import io
 import numpy as np
 import streamlit as st
 
+from scipy.io import wavfile
 from aitextgen import aitextgen
 
 if not os.path.isfile("pytorch_model.bin"):
