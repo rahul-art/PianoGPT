@@ -10,16 +10,13 @@ import streamlit as st
 from scipy.io import wavfile
 from aitextgen import aitextgen
 
-@st.cache
-def setup_ai():
-    os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
+os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
 
 st.title("PianoGPT")
-setup_ai()
 ai = aitextgen(model_folder=".")
 
 form = st.form(key="submit-form")
-title = form.text_input('Enter a title if not the AI will randomly generate it")
+title = form.text_input("Enter a title if not the AI will randomly generate it")
 submit = form.form_submit_button("Generate")
 
 if submit:
