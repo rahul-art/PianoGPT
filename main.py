@@ -13,7 +13,8 @@ from aitextgen import aitextgen
 @st.cache
 def setup_ai():
     os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
-    st.title("PianoGPT")
+
+st.title("PianoGPT")
 
 setup_ai()
 
