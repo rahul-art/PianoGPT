@@ -11,7 +11,7 @@ import streamlit as st
 from scipy.io import wavfile
 from aitextgen import aitextgen
 
-@st.cache(hash_funcs={aitextgen: id}, allow_output_mutation=True, max_entries=10, ttl=3600)
+@st.cache(hash_funcs={aitextgen: id}, allow_output_mutation=True, max_entries=5, ttl=3600)
 def setup_ai():
     os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
     return aitextgen(model_folder=".")
