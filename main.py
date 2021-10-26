@@ -58,3 +58,9 @@ if generate:
         wavfile.write(virtualfile, 44100, audio_data)
         st.text(generated.split("T:")[1].split("\n")[0])
         st.audio(virtualfile)
+        
+        del virtualfile
+        del audio_data
+        del midi_data
+        
+        gc.collect()
