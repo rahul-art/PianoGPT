@@ -4,6 +4,7 @@ import random
 import pretty_midi
 import io
 import gc
+import subprocess
 
 import numpy as np
 import streamlit as st
@@ -37,7 +38,7 @@ if generate:
             with open("generated_music.abc", "w") as f:
                 f.write(generated)
 
-            if "Error" not in str(os.system("abc2midi generated_music.abc -o generated_music.mid")):
+            if "Error" not in str(subprocess.check_output("abc2midi generated_music.abc -o generated_music.mid", shell=True)):
                 break
         os.remove("generated_music.abc")
 
