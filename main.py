@@ -10,24 +10,23 @@ import streamlit as st
 from scipy.io import wavfile
 from aitextgen import aitextgen
 
-@st.cache
-def setup_ai():
-    os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
+os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
 
 setup_ai()
 
 st.title("PianoGPT")
 
-if os.path.isfile("pytorch_model.bin"):
-    ai = aitextgen(model_folder=".")
-    os.remove("pytorch_model.bin")
+
+ai = aitextgen(model_folder=".")
+
+os.remove("pytorch_model.bin")
 
 random_number = random.randrange(0, 150_000)
 title = st.text_input(label="Enter a title or the ai will randomly generate it")
 
 with st.spinner("Generating..."):
     while True:
-        generated = ai.generate_one(prompt=f"X:{random_number}\nT:{title}\n",
+        generated = ai.generate_one(prompt=f"X:{random_number}\nT:{title}",
                                     top_k=40,
                                     temperature=0.8,
                                     max_length=300,
