@@ -22,9 +22,9 @@ st.title("PianoGPT")
 
 form = st.form(key="submit-form")
 title = form.text_input("Enter a title if not the AI will randomly generate it") + "\n"
-submit = form.form_submit_button("Generate")
+generate = form.form_submit_button("Generate")
 
-if submit:
+if generate:
     random_number = random.randrange(0, 150_000)
     
     with st.spinner("Generating..."):
