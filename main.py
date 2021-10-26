@@ -65,4 +65,6 @@ if generate:
         del audio_data
         del midi_data
         
+        print(subprocess.getoutput("ls"))
+        
         gc.collect()
