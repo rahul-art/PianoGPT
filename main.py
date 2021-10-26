@@ -41,7 +41,7 @@ if generate:
         while True:
             generated = ai.generate_one(prompt=f"X:{random_number}\nT:{title}",
                                         top_k=40,
-                                        temperature=0.8,
+                                        temperature=3.0,
                                         max_length=300,
                                         eos_token_id=437).replace("\n<|end", "")
             
