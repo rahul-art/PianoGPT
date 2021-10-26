@@ -3,6 +3,7 @@ import os.path
 import random
 import pretty_midi
 import io
+import gc
 
 import numpy as np
 import streamlit as st
@@ -10,8 +11,12 @@ import streamlit as st
 from scipy.io import wavfile
 from aitextgen import aitextgen
 
-os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
+@st.cache
+def setup()
+    os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
 
+setup()
+    
 st.title("PianoGPT")
 ai = aitextgen(model_folder=".")
 
@@ -47,3 +52,9 @@ if submit:
         wavfile.write(virtualfile, 44100, audio_data)
         st.text(generated.split("T:")[1].split("\n")[0])
         st.audio(virtualfile)
+        
+        del ai
+        del audio_data
+        del virtualfile
+        del midi_data
+        gc.collect()
