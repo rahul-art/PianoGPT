@@ -64,5 +64,3 @@ if generate:
         del midi_data
         
         gc.collect()
-        st.text(str(subprocess.getoutput("ls")))
-
