@@ -13,12 +13,11 @@ from aitextgen import aitextgen
 @st.cache
 def setup_ai():
     os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
+    ai = aitextgen(model_folder=".")
 
 st.title("PianoGPT")
 
 setup_ai()
-
-ai = aitextgen(model_folder=".")
 
 random_number = random.randrange(0, 150_000)
 title = st.text_input(label="Enter a title or the ai will randomly generate it") + "\n"
@@ -48,5 +47,3 @@ with st.spinner("Generating..."):
     wavfile.write(virtualfile, 44100, audio_data)
     st.text(generated.split("T:")[1].split("\n")[0])
     st.audio(virtualfile)
-    
-    del virtualfile, audio_data, midi_data, ai
