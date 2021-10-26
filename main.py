@@ -41,6 +41,8 @@ if generate:
             if "Error" not in str(subprocess.getoutput("abc2midi generated_music.abc -o generated_music.mid")):
                 break
         os.remove("generated_music.abc")
+        
+        print(generated)
 
         # https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
         midi_data = pretty_midi.PrettyMIDI("generated_music.mid")
