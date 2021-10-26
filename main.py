@@ -42,7 +42,7 @@ if generate:
                 break
         os.remove("generated_music.abc")
         
-        print(generated)
+        st.text(generated)
 
         # https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
         midi_data = pretty_midi.PrettyMIDI("generated_music.mid")
