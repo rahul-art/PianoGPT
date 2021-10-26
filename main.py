@@ -38,7 +38,7 @@ if generate:
             with open("generated_music.abc", "w") as f:
                 f.write(generated)
 
-            if "Error" not in str(subprocess.check_output("abc2midi generated_music.abc -o generated_music.mid", shell=True)):
+            if "Error" not in str(subprocess.getoutput("abc2midi generated_music.abc -o generated_music.mid)):
                 break
         os.remove("generated_music.abc")
 
