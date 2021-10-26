@@ -23,7 +23,7 @@ st.title("PianoGPT")
 st.text("Created by Annas")
 
 form = st.form(key="submit-form")
-title = form.text_input("Enter a title if not the AI will randomly generate it")
+title = form.text_input("Enter a title if not the AI will generate it randomly")
 
 if title.strip() != "":
     title += "\n"
