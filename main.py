@@ -21,7 +21,7 @@ ai = setup_ai()
 st.title("PianoGPT")
 
 form = st.form(key="submit-form")
-title = form.text_input("Enter a title if not the AI will randomly generate it")
+title = form.text_input("Enter a title if not the AI will randomly generate it") + "\n"
 submit = form.form_submit_button("Generate")
 
 if submit:
