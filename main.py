@@ -14,8 +14,10 @@ from aitextgen import aitextgen
 
 @st.cache(hash_funcs={aitextgen: id}, allow_output_mutation=True)
 def setup_ai():
-    os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
     return aitextgen(model_folder=".")
+
+if not os.path.isfile("pytorch_model.bin"):
+    os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
 
 ai = setup_ai()
     
