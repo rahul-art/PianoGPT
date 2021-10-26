@@ -31,8 +31,6 @@ if title.strip() != "":
 generate = form.form_submit_button("Generate")
 
 if generate:
-    os.remove("rm *.wav")
-    
     random_number = random.randrange(0, 150_000)
     
     with st.spinner("Generating..."):
@@ -66,3 +64,5 @@ if generate:
         del midi_data
         
         gc.collect()
+        os.remove("rm *.wav")
+
