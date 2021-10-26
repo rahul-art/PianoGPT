@@ -12,8 +12,6 @@ from aitextgen import aitextgen
 
 os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
 
-setup_ai()
-
 st.title("PianoGPT")
 
 
