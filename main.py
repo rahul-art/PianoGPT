@@ -22,7 +22,11 @@ ai = setup_ai()
 st.title("PianoGPT")
 
 form = st.form(key="submit-form")
-title = form.text_input("Enter a title if not the AI will randomly generate it") + "\n"
+title = form.text_input("Enter a title if not the AI will randomly generate it")
+
+if title.strip() != ""
+    title += "\n"
+
 generate = form.form_submit_button("Generate")
 
 if generate:
@@ -41,8 +45,6 @@ if generate:
             if "Error" not in str(subprocess.getoutput("abc2midi generated_music.abc -o generated_music.mid")):
                 break
         os.remove("generated_music.abc")
-        
-        st.text(generated)
 
         # https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
         midi_data = pretty_midi.PrettyMIDI("generated_music.mid")
