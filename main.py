@@ -15,9 +15,7 @@ from aitextgen import aitextgen
 @st.cache(hash_funcs={aitextgen: id})
 def setup_ai():
     os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
-    ai = aitextgen(model_folder=".")
-    os.remove("pytorch_model.bin")
-    return ai
+    return aitextgen(model_folder=".")
 
 ai = setup_ai()
     
