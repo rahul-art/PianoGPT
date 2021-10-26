@@ -12,7 +12,7 @@ from scipy.io import wavfile
 from aitextgen import aitextgen
 
 @st.cache
-def setup()
+def setup():
     os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
 
 setup()
