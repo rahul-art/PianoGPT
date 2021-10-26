@@ -49,9 +49,6 @@ if generate:
         # https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
         midi_data = pretty_midi.PrettyMIDI("generated_music.mid")
         audio_data = midi_data.fluidsynth()
-        audio_data = np.int16(
-            audio_data / np.max(np.abs(audio_data)) * 32767 * 0.9
-        )  # -- Normalize for 16 bit audio https://github.com/jkanner/streamlit-audio/blob/main/helper.py
 
         virtualfile = io.BytesIO()
         wavfile.write(virtualfile, 44100, audio_data)
