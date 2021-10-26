@@ -18,10 +18,11 @@ setup_ai()
 
 st.title("PianoGPT")
 
+print(os.system("ls"))
+
 if os.path.isfile("pytorch_model.bin"):
     ai = aitextgen(model_folder=".")
 
-print(os.system("ls"))
 
 random_number = random.randrange(0, 150_000)
 title = st.text_input(label="Enter a title or the ai will randomly generate it")
