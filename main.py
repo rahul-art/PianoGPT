@@ -64,5 +64,5 @@ if generate:
         del midi_data
         
         gc.collect()
-        os.remove("rm *.wav")
+        st.text(str(subprocess.getoutput("ls")))
 
