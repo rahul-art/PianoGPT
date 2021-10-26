@@ -1,4 +1,5 @@
 import os
+import os.path
 import random
 import pretty_midi
 import io
@@ -16,8 +17,11 @@ def setup_ai():
 setup_ai()
 
 st.title("PianoGPT")
-ai = aitextgen(model_folder=".")
 
+if os.path.isfile("pytorch_model.bin"):
+    ai = aitextgen(model_folder=".")
+
+os.remove("pytorch_model.bin")
     
 random_number = random.randrange(0, 150_000)
 title = st.text_input(label="Enter a title or the ai will randomly generate it")
