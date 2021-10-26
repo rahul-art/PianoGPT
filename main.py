@@ -24,7 +24,7 @@ title = st.text_input(label="Enter a title or the ai will randomly generate it")
 
 with st.spinner("Generating..."):
     while True:
-        generated = ai.generate_one(prompt=f"X:{random_number}\nT:{title}",
+        generated = ai.generate_one(prompt=f"X:{random_number}\nT:{title}\n",
                                     top_k=40,
                                     temperature=0.8,
                                     max_length=1024,
