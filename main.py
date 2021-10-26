@@ -32,7 +32,7 @@ if generate:
             generated = ai.generate_one(prompt=f"X:{random_number}\nT:{title}",
                                         top_k=40,
                                         temperature=0.8,
-                                        max_length=300,
+                                        max_length=1024,
                                         eos_token_id=437).replace("\n<|end", "")
             with open("generated_music.abc", "w") as f:
                 f.write(generated)
