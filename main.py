@@ -20,7 +20,7 @@ def setup_ai():
 ai = setup_ai()
     
 st.title("PianoGPT")
-st.text("Created by Annas")
+st.text("AI that generate piano music\nCreated by Annas")
 
 form = st.form(key="submit-form")
 title = form.text_input("Enter a title if not the AI will generate it randomly")
