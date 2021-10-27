@@ -19,7 +19,6 @@ def setup():
 
 setup()
 
-st.text(subprocess.getoutput("ls"))
 st.title("PianoGPT")
 st.text("AI that generate piano music\nCreated by Annas")
 
