@@ -15,11 +15,10 @@ from scipy.io import wavfile
 def setup():
     os.system("gdown --id 1-I_kCu3a0L8XeMDHZL_ILxwIcAyuNoPX")
     os.system("tar -xf PianoGPT.tar.gz")
-    os.chdir("/PianoGPT")
 
 
 setup()
-    
+
 st.text(subprocess.getoutput("ls"))
 st.title("PianoGPT")
 st.text("AI that generate piano music\nCreated by Annas")
@@ -37,7 +36,7 @@ if generate:
     
     with st.spinner("Generating..."):
         while True:
-            process = subprocess.Popen([f"./gpt2tc -m 117M -l 1024 -t 0.8 g X:{random_number}\nT:{title}"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen([f"cd PianoGPT && ./gpt2tc -m 117M -l 1024 -t 0.8 g X:{random_number}\nT:{title}"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             result = b""
             st.text(result)
