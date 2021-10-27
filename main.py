@@ -25,13 +25,16 @@ st.text("AI that generate piano music\nCreated by Annas")
 form = st.form(key="submit-form")
 title = "".join([chunk.title() for chunk in re.sub("\s+", " ", form.text_input("Enter a title or let the AI generate it randomly")).split(" ")])
 
+if title.strip() != "":
+    title += ","
+
 generate = form.form_submit_button("Generate")
 
 if generate:
     
     with st.spinner("Generating..."):
         while True:
-            process = subprocess.Popen([f"cd PianoGPT && ./gpt2tc -m 117M -l 1024 -t 0.9 g T:{title}, The"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen([f"cd PianoGPT && ./gpt2tc -m 117M -l 1024 -t 0.9 g T:{title}"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             result = b""
             
