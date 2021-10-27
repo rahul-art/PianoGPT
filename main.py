@@ -4,6 +4,7 @@ import pretty_midi
 import io
 import gc
 import subprocess
+import time
 
 import numpy as np
 import streamlit as st
@@ -37,16 +38,18 @@ if generate:
 
             result = b""
             
-            while True:
+            for i in range(150):
               text = process.stdout.readline()
               result += text
 
               if b"<|endoftext|>" in result:
                 process.terminate()
                 break
+              
+              time.sleep(0.1)
 
 
-            generated = "X:1\n" + result.decode("utf-8").replace("<|endoftext|>", "")
+            generated = "X:1\n" + result.decode("utf-8").split("<|endoftext|>")[0]
 
             with open("generated_music.abc", "w") as f:
                 f.write(generated)
