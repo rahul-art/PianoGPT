@@ -35,10 +35,10 @@ if generate:
     
     with st.spinner("Generating..."):
         while True:
-            process = subprocess.Popen([fl"./gpt2tc -m 117M -l 1024 -t 0.8 g X:{random_number}\nT:{title}"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen([f"./gpt2tc -m 117M -l 1024 -t 0.8 g X:{random_number}\nT:{title}"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             result = b""
-
+            st.text(result)
             while True:
               text = process.stdout.readline()
               result += text
