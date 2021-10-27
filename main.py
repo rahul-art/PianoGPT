@@ -12,7 +12,7 @@ import streamlit as st
 from scipy.io import wavfile
 
 @st.cache(allow_output_mutation=True)
-def setup()
+def setup():
     os.system("gdown --id 1-I_kCu3a0L8XeMDHZL_ILxwIcAyuNoPX")
     os.system("tar -xf PianoGPT.tar.gz")  
 
