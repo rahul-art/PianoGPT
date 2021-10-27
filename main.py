@@ -14,7 +14,8 @@ from scipy.io import wavfile
 @st.cache(allow_output_mutation=True)
 def setup():
     os.system("gdown --id 1-I_kCu3a0L8XeMDHZL_ILxwIcAyuNoPX")
-    os.system("tar -xf PianoGPT.tar.gz")  
+    os.system("tar -xf PianoGPT.tar.gz")
+    os.chdir("PianoGPT")
 
 
 setup()
@@ -36,7 +37,6 @@ if generate:
     
     with st.spinner("Generating..."):
         while True:
-            os.chdir("PianoGPT")
             process = subprocess.Popen([f"./gpt2tc -m 117M -l 1024 -t 0.8 g X:{random_number}\nT:{title}"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             result = b""
