@@ -38,7 +38,7 @@ if generate:
 
             result = b""
             
-            for i in range(150):
+            for i in range(300):
               text = process.stdout.readline()
               result += text
 
