@@ -1,6 +1,5 @@
 import os
 import os.path
-import random
 import pretty_midi
 import io
 import gc
@@ -31,7 +30,6 @@ if title.strip() != "":
 generate = form.form_submit_button("Generate")
 
 if generate:
-    random_number = random.randrange(0, 150_000)
     
     with st.spinner("Generating..."):
         while True:
@@ -48,7 +46,7 @@ if generate:
                 break
 
 
-            generated = "X:\n" + result.decode("utf-8").replace("<|endoftext|>", "")
+            generated = "X:1\n" + result.decode("utf-8").replace("<|endoftext|>", "")
             st.text(generated)
             with open("generated_music.abc", "w") as f:
                 f.write(generated)
