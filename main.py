@@ -1,5 +1,5 @@
 import os
-import os.file
+import os.path
 import random
 import pretty_midi
 import io
@@ -11,7 +11,7 @@ import streamlit as st
 
 from scipy.io import wavfile
 
-if os.file.isfile("PianoGPT.tar.gz"):
+if os.path.isfile("PianoGPT.tar.gz"):
     os.system("gdown --id 1-I_kCu3a0L8XeMDHZL_ILxwIcAyuNoPX")
     os.system("tar -xf PianoGPT.tar.gz")  
 
