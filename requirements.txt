@@ -1,4 +1,3 @@
-aitextgen
 streamlit
 gdown
 mido
