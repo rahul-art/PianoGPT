@@ -15,10 +15,10 @@ def setup():
     os.system("gdown --id 1-I_kCu3a0L8XeMDHZL_ILxwIcAyuNoPX")
     os.system("tar -xf PianoGPT.tar.gz")
     os.system("cd PianoGPT")
-
+    
 setup()
 
-
+st.text(subprocess.getoutput("ls"))
 st.title("PianoGPT")
 st.text("AI that generate piano music\nCreated by Annas")
 
