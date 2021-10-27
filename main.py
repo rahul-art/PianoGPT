@@ -68,7 +68,7 @@ if generate:
                     virtualfile = io.BytesIO()
                     wavfile.write(virtualfile, 44100, audio_data)
 
-                    st.text(generated.split("T:")[1].split("\n")[0].split(",")[0])
+                    st.text(generated.split("T:")[1].split("\n")[0])
                     st.audio(virtualfile)
                 except:
                     continue
