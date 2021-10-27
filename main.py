@@ -54,24 +54,21 @@ if generate:
                 f.write(generated)
 
             if "Error" not in str(subprocess.getoutput("abc2midi generated_music.abc -o generated_music.mid")):
+                try:
+                    os.remove("generated_music.abc")
+
+                    # https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
+                    midi_data = pretty_midi.PrettyMIDI("generated_music.mid")
+                    audio_data = midi_data.fluidsynth()
+                    audio_data = np.int16(
+                        audio_data / np.max(np.abs(audio_data)) * 32767 * 0.9
+                    )  # -- Normalize for 16 bit audio https://github.com/jkanner/streamlit-audio/blob/main/helper.py
+
+                    virtualfile = io.BytesIO()
+                    wavfile.write(virtualfile, 44100, audio_data)
+
+                    st.text(generated.split("T:")[1].split("\n")[0])
+                    st.audio(virtualfile)
+                except:
+                    continue
                 break
-            else:
-                continue
-            try:
-                os.remove("generated_music.abc")
-
-                # https://github.com/andfanilo/streamlit-midi-to-wav/blob/main/app.py
-                midi_data = pretty_midi.PrettyMIDI("generated_music.mid")
-                audio_data = midi_data.fluidsynth()
-                audio_data = np.int16(
-                    audio_data / np.max(np.abs(audio_data)) * 32767 * 0.9
-                )  # -- Normalize for 16 bit audio https://github.com/jkanner/streamlit-audio/blob/main/helper.py
-
-                virtualfile = io.BytesIO()
-                wavfile.write(virtualfile, 44100, audio_data)
-
-                st.text(generated.split("T:")[1].split("\n")[0])
-                st.audio(virtualfile)
-            except:
-                continue
-            break
