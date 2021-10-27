@@ -14,7 +14,6 @@ from scipy.io import wavfile
 def setup():
     os.system("gdown --id 1-I_kCu3a0L8XeMDHZL_ILxwIcAyuNoPX")
     os.system("tar -xf PianoGPT.tar.gz")
-    os.remove("PianoGPT.tar.gz")
     os.system("cd PianoGPT/")
     
 setup()
