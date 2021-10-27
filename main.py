@@ -1,4 +1,5 @@
 import os
+import os.file
 import random
 import pretty_midi
 import io
@@ -10,13 +11,9 @@ import streamlit as st
 
 from scipy.io import wavfile
 
-@st.cache(allow_output_mutation=True)
-def setup():
+if os.file.isfile("PianoGPT.tar.gz"):
     os.system("gdown --id 1-I_kCu3a0L8XeMDHZL_ILxwIcAyuNoPX")
-    os.system("tar -xf PianoGPT.tar.gz")
-    os.system("cd PianoGPT/")
-    
-setup()
+    os.system("tar -xf PianoGPT.tar.gz")  
 
 st.text(subprocess.getoutput("ls"))
 st.title("PianoGPT")
@@ -35,7 +32,7 @@ if generate:
     
     with st.spinner("Generating..."):
         while True:
-            process = subprocess.Popen([f"./gpt2tc -m 117M -l 1024 -t 0.8 g X:{random_number}\nT:{title}"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen([f"./PianoGPT/gpt2tc -m 117M -l 1024 -t 0.8 g X:{random_number}\nT:{title}"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             result = b""
             st.text(result)
