@@ -22,7 +22,7 @@ st.title("PianoGPT")
 st.text("AI that generate piano music\nCreated by Annas")
 
 form = st.form(key="submit-form")
-title = form.text_input("Enter a title or let the AI generate it randomly")
+title = "".join([chunk.title() for chunk in form.text_input("Enter a title or let the AI generate it randomly").split(" ")])
 
 if title.strip() != "":
     title += "\n"
