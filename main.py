@@ -4,6 +4,7 @@ import pretty_midi
 import io
 import subprocess
 import time
+import re
 
 import numpy as np
 import streamlit as st
@@ -22,7 +23,7 @@ st.title("PianoGPT")
 st.text("AI that generate piano music\nCreated by Annas")
 
 form = st.form(key="submit-form")
-title = "".join([chunk.title() for chunk in form.text_input("Enter a title or let the AI generate it randomly").split(" ")])
+title = "".join([chunk.title() for chunk in re.sub("\s+", " ", form.text_input("Enter a title or let the AI generate it randomly")).split(" ")])
 
 if title.strip() != "":
     title += "\n"
