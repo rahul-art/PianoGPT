@@ -9,19 +9,15 @@ import numpy as np
 import streamlit as st
 
 from scipy.io import wavfile
-from aitextgen import aitextgen
 
-@st.cache(hash_funcs={aitextgen: id}, allow_output_mutation=True, max_entries=5, ttl=3600)
-def setup_ai():
-    os.system("gdown --id 1LMYHKntH9b348BviVwEG_CENXPlDDQDO")
-    return aitextgen(model_folder=".")
+@st.cache(allow_output_mutation=True)
+def setup():
+    os.system("gdown --id 1-I_kCu3a0L8XeMDHZL_ILxwIcAyuNoPX")
+    os.system("tar -xf PianoGPT.tar.gz")
+    os.system("cd PianoGPT")
 
-ai = setup_ai()
+setup()
 
-try:
-    os.remove("*.bin")
-except:
-    pass
 
 st.title("PianoGPT")
 st.text("AI that generate piano music\nCreated by Annas")
@@ -39,11 +35,20 @@ if generate:
     
     with st.spinner("Generating..."):
         while True:
-            generated = ai.generate_one(prompt=f"X:{random_number}\nT:{title}",
-                                        top_k=40,
-                                        temperature=0.8,
-                                        max_length=300,
-                                        eos_token_id=437).replace("\n<|end", "")
+            process = subprocess.Popen(["./gpt2tc -m 117M -l 1024 -t 0.8 g X:"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+            result = b""
+
+            while True:
+              text = process.stdout.readline()
+              result += text
+
+              if b"<|endoftext|>" in result:
+                process.terminate()
+                break
+
+
+            generated = result.decode("utf-8").replace("<|endoftext|>", "")
             
             with open("generated_music.abc", "w") as f:
                 f.write(generated)
