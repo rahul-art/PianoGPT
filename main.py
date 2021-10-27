@@ -49,7 +49,7 @@ if generate:
 
 
             generated = result.decode("utf-8").replace("<|endoftext|>", "")
-            
+            st.text(generated)
             with open("generated_music.abc", "w") as f:
                 f.write(generated)
 
