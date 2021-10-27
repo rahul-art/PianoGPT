@@ -31,7 +31,7 @@ if generate:
     
     with st.spinner("Generating..."):
         while True:
-            process = subprocess.Popen([f"cd PianoGPT && ./gpt2tc -m 117M -l 1024 -t 0.9 g T:{title}"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen([f"cd PianoGPT && ./gpt2tc -m 117M -l 1024 -t 0.9 g T:{title}, The"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             result = b""
             
