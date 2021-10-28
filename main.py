@@ -5,7 +5,7 @@ import io
 import subprocess
 import time
 import re
-
+import random
 import numpy as np
 import streamlit as st
 
@@ -39,7 +39,9 @@ if generate:
     
     with st.spinner("Generating..."):
         while True:
-            process = subprocess.Popen([f"cd PianoGPT && ./gpt2tc -m 117M -l 1024 -t 0.9 g 'T:{title}'"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            random_int = random.randrange(151_000)
+
+            process = subprocess.Popen([f"cd PianoGPT && ./gpt2tc -m 117M -l 1024 -t 0.9 g 'X:{random_int}\nT:{title}'"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             result = b""
             
@@ -54,7 +56,7 @@ if generate:
               time.sleep(0.1)
 
 
-            generated = "X:1\n" + result.decode("utf-8").split("<|endoftext|>")[0]
+            generated = result.decode("utf-8").split("<|endoftext|>")[0]
 
             with open("generated_music.abc", "w") as f:
                 f.write(generated)
