@@ -25,10 +25,7 @@ st.text("AI that generate piano music\nCreated by Annas")
 form = st.form(key="submit-form")
 input_text = re.sub("\s+", " ", form.text_input("Enter a title or let the AI generate it randomly"))
 
-if len(input_text.split(" ")) > 1:
-    title = "".join([chunk.title() for chunk in input_text.split(" ")])
-else:
-    title = input_text
+title = "".join([chunk[0].upper() + chunk[1:] if len(chunk) >= 2  else chunk for chunk in input_text.split(" ")])
 
 if title.strip() != "":
     title += "\n"
