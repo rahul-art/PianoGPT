@@ -22,7 +22,7 @@ setup()
 st.title("PianoGPT")
 st.text("AI that generate piano pieces\nCreated by Annas")
 st.markdown(
-    """<a href="https://github.com/annasajkh/PianoGPT">more info here</a>""", unsafe_allow_html=True,
+    """[more info here](https://github.com/annasajkh/PianoGPT)"""
 )
 
 form = st.form(key="submit-form")
