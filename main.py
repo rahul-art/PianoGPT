@@ -27,19 +27,20 @@ st.markdown(
 
 form = st.form(key="submit-form")
 input_text = re.sub("\s+", " ", form.text_input("Enter a title or let the AI generate it randomly"))
+temperature = form.number_input("Temperature (the higher the value the less repetitive it will be)", min_value=0.3, max_value=1.0, value=1.0, step=0.01)
+top_k = form.number_input("Top k (the number of highest probability to be consider)", min_value=3, max_value=50257, value=40, step=1)
+generate = form.form_submit_button("Generate")
 
 title = "".join([chunk[0].upper() + chunk[1:] if len(chunk) >= 2  else chunk for chunk in input_text.split(" ")])
 
 if title.strip() != "":
     title += "\n"
 
-generate = form.form_submit_button("Generate")
 
 if generate:
-    
     with st.spinner("Generating..."):
         while True:
-            process = subprocess.Popen([f"cd PianoGPT && ./gpt2tc -m 117M -l 1024 -t 1.0 g 'T:{title}'"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen([f"cd PianoGPT && ./gpt2tc -m 117M -l 1024 -k {top_k} -t {temperature} g 'T:{title}'"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             result = b""
             
