@@ -10,3 +10,4 @@ actually this has been done by https://www.gwern.net/GPT-2-music i just try to t
 
 # I used this gpt2 implementation
 https://bellard.org/libnc/gpt2tc.html
+https://github.com/minimaxir/gpt-2-simple
