@@ -19,8 +19,8 @@ def setup():
 
 setup()
 
-st.title("PianoGPT")
-st.text("AI that generate piano pieces\nCreated by Annas")
+st.title("music generation")
+st.text("AI that generate music")
 st.markdown(
     """[more info here](https://github.com/annasajkh/PianoGPT)"""
 )
