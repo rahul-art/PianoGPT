@@ -5,4 +5,3 @@ pretty-midi
 pyfluidsynth
 soundfile
 scipy
-fluidsynth
